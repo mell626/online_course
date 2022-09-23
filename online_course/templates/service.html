@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <p class="p is-size-2">Extesion Services</p>
+    <br>
+    <br>
+    
+        {% if data %}
+        {% for details in data %}
+        <div class="notification is-hoverable" id="row">
+            <div class="id" id="id"> {{ details.public_id }}  </div>
+            <div class="columns">
+                <div class="column"></div>
+                <div class="column">
+                    <img src=" {{ url_for('static', filename = 'ext/' + details.img_link ) }} " alt="..." id="ext" srcset="" height="300" width="300" style="border: 1px solid #888 ;">
+            <br>
+           <p class="p is-size-5" id="caption">  {{ details.details | safe}} </p>
+           <br>
+                </div>
+                <div class="column"></div>
+            </div>        
+        </div>
+           
+        {% endfor %}
+    {% else %}
+    {% endif %}
+    
+    </div>
+</div>
+
+{% endblock %}

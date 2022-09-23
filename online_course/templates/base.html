@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href=" {{ url_for('static', filename= 'css/style.css') }} ">
+    <title>Extension Services for Cavite State University</title>
+</head>
+<body>
+    <div class="navbar" style="background-color: #ddd;">
+        
+        <div class="navbar-item has-text-white is-hoverable"> <a href=" {{ url_for('default') }} "> Home</a> </div>
+        <div class="navbar-item has-text-white is-hoverable"><a href=" {{ url_for('about') }} ">About</a></div>
+        <div class="navbar-item has-text-white is-hoverable"><a href=" {{ url_for('app_service.index') }} ">Services</a></div>
+        <div class="navbar-item has-text-white is-hoverable"><a href="{{ url_for('app_course.index') }}">Courses</a></div>
+        {% if user %}
+            <div class="navbar-item is-hoverable" id="login"><a href=" {{ url_for('app_user.logout') }} " title="Click to Logout"> {{ user }} </a></div>
+        {% else %}
+        <div class="navbar-item has-text-white is-hoverable"><a href=" {{ url_for('app_user.login') }} ">Login</a></div>
+        {% endif %}
+    </div>
+    <div class="navbar is-primary" style="background-color: #ddd; justify-content: center;">
+    <input type="text" name="search" id="search" class="input is-rounded" style="width: 700px;" placeholder="Search Webinars/Courses">
+    &nbsp;
+    <button class="button " >Search</button>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+    <script defer src=" {{ url_for('static', filename = 'js/script.js') }} "></script>
+</body>
+</html>

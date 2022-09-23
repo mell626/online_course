@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns">
+            <div class="column"></div>
+            <div class="column is-6">
+                <br><br>
+                <p class="p is-size-4">Login User</p>
+                <br>
+                {% with msg = get_flashed_messages() %}
+                    {% if msg %}
+                        {% for message in msg %}
+                        <div class="notification is-warning">
+                            <button class="delete"></button>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+                    {{ form.csrf_token() }}
+                    {{form.email.label(class='label')}} {{ form.email(class_='input') }}
+                    <br>
+                    {{form.password.label(class='label')}}  {{ form.password(class_='input') }}
+                    <br><br>
+                    <p class="p">No Account Yet? <a href=" {{ url_for('app_user.signup') }} ">Signup Here</a> |  <a href=" {{ url_for('app_user.reset_password') }} "> Forgot Password?</a>  </p>
+                    <input type="submit" value="Login" class="button is-primary is-pulled-right">
+
+                </form>
+            </div>
+            <div class="column"></div>
+        </div>
+    </div>
+    
+{% endblock %}

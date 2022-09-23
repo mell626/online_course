@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="navbar is-primary">
+        <div class="navbar-item">New</div>
+        <div class="navbar-item">Edit</div>
+        
+    </div>
+    <div class="columns">
+        <div class="column">
+            </div>
+       
+        <div class="column is-8">
+            <form method="POST" enctype="multipart/form-data">
+                <p class="p is-size-3">Add New Extension Service </p>
+                {% with msg = get_flashed_messages() %}
+                    {% if msg %}
+                        {% for message in msg %}
+                            <div class="notification is-info">
+                            <button class="delete"></button>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <br><br>
+                {{ form.title.label }}  {{ form.title(class = 'input') }}
+                <br>
+                {{ form.details.label }} {{ form.details(class ='textarea') }}
+                <br>
+                {{ form.logo.label }} {{ form.logo }}
+                {{ form.csrf_token() }}
+                <input type="submit" class="button is-info is-pulled-right" value="Add">
+            </form>
+        </div>
+        <div class="column is-2"></div>
+    </div>
+</div>
+
+{% endblock content %}

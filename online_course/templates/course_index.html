@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br><br>
+<div class="container">
+    {% with msg = get_flashed_messages() %}
+        {% if msg %}
+            {% for message in msg %}
+            <div class="notification is-warning">
+                <button class="delete"></button>
+                {{ message }}
+            </div>  
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+{% if data %}
+    {% for courses in data %}
+            <div id="list">
+                <div class="columns">
+                    <div class="column is-2"></div>
+                    <div class="column is-3">
+                        <div class="hero">
+                       <video class="image is-1" src=" {{ url_for('static', filename = 'video/' + courses.video_link) }} " alt="..."  id ="img">
+                    </div>
+                    </div>
+                    <div class="column is-4">
+                        <br>
+                        <p class="p" id="id"> {{ courses.id }} </p>
+                       <p class="p is-size-5 has-text-black" id="course"> <b>{{ courses.title }}</b></p>
+                       <br>
+                       <p class="p" id="datestamp"> {{ courses.date_created }} </p>
+                    </div>
+                    <div class="column is-2x"></div>
+                </div>  
+               </div>  
+               <br><br>
+                <input type="hidden" name="data" id="data" value=" {{ courses.id }} ">
+    {% endfor %}
+    {% else %}
+            <p class="p is-size-3">No new videos</p>
+{% endif %}
+</div>
+
+<script>
+    
+</script>
+{% endblock %}

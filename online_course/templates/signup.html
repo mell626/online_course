@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="columns">
+    <div class="column"></div>
+    <div class="column is-6">
+        <br>
+        Signup New User
+        <br>
+        <br>
+        <form method="POST">
+        {{ form.csrf_token() }}
+        {{ form.email.label }} {{ form.email(class='input') }}
+        <ul>
+            {% for error in form.email.errors %}
+            <li style="color: red;"> {{ error }} </li>
+            {% endfor %}
+        </ul>
+        {{ form.password.label }} {{ form.password(class ='input') }}
+            
+        {{ form.confirm.label }} {{ form.confirm(class='input') }}
+        <ul>
+            {% for error in form.password.errors %}
+            <li style="color: red;"> {{ error }} </li>
+            {% endfor %}
+        </ul>
+        {{ form.last_name.label }} {{ form.last_name(class='input') }}
+        {{ form.first_name.label }} {{ form.first_name(class='input') }}
+        {{ form.middle_name.label }} {{ form.middle_name(class='input') }}
+        <br><br>
+        <input type="submit" value="Signup" class="button is-pulled-right is-info">
+        </form>
+
+    </div>
+    <div class="column"></div>
+</div>
+{% endblock %}

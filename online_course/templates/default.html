@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <!-- {% with msg = get_flashed_messages() %}
+        {% if msg %}
+            {% for message in msg %}
+                <div class="notification is-info">
+                    <button class="delete"></button>
+                        {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %} -->
+
+    <div class="hero is-halfheight is-info">
+            
+            <div class="hero-body">
+                <!-- <img src="{{ url_for('static', filename= 'ext/header.jpg') }}" alt="..." class="image" id="default-img"> -->
+                <div class="columns">
+                    <div class="column">
+                       <div class="title is-overlay" style="color: white; font-size: 60px; top: 25%; left: 5%;">CvSU E-Learning Services</div>
+                       <div class="title is-overlay" style="color: white; font-size: 36px;font-style: italic ; top: 35%; left: 5%;">(Demo website)</div>
+                    </div>
+                    <div class="column">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero is-halfheight">
+            <div class="hero-body">
+                
+                    {{ data }}
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="container">
+        <img src="" alt="no image" class="image is-1" height="250" width="250" style="border: 1px solid black;">
+    </div>
+    <br>
+<p class="p"> {{ profile.email | safe }} </p>
+<p class="p"> {{ profile.last_name | safe }} </p>
+<p class="p"> {{ profile.first_name | safe}} </p>
+</div>
+    
+{% endblock content %}

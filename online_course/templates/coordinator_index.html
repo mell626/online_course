@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="navbar is-primary">
+        <div class="navbar-item">New</div>
+        <div class="navbar-item">Edit</div>
+        
+    </div>
+    <div class="columns">
+        <div class="column">
+            </div>
+       
+        <div class="column is-8">
+            <form method="POST" enctype="multipart/form-data">
+                <p class="p is-size-3">Add New Course </p>
+                {% with msg = get_flashed_messages() %}
+                    {% if msg %}
+                        {% for message in msg %}
+                            <div class="notification is-info">
+                            <button class="delete"></button>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <br>
+                <label for="title">Title: </label>
+                <input type="text" name="title" id="title" required class="input" title="Course title">
+                <label for="details">Course Description: </label>
+                <input type="texterea" class="textarea" id="details" name="details" title="Course description">
+                <br><br>
+                <label for="service">Extension Service:</label>
+                <div class="select">
+                    <select name="service" id="service" name="service">
+                        {% if extensions %}
+                            {% for data in extensions %}
+                                <option value=" {{ data.id }} "> {{ data.title }}  </option>
+                            {% endfor %}
+                        {% endif %}
+                       
+                    </select>
+                </div>
+                <br>
+                <br>
+                <br>
+                    <label for="img">Poster:</label>
+                <input type="file" name="file" id="file" required>
+                <label for="video">Course Video: </label>
+                <input type="file" name="video" id="video" required>
+                <br><br>
+                <input type="submit" class="button is-info is-pulled-right">
+            </form>
+        </div>
+        <div class="column is-2"></div>
+    </div>
+</div>
+
+{% endblock %}
